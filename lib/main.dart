@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:her_saarthi/screens/homescreen.dart';
+import 'package:her_saarthi/screens/login.dart';
 import 'package:her_saarthi/screens/startscree.dart';
 
 void main(List<String> args) {
@@ -14,15 +15,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late List<Widget> screens;
   late Widget screen;
-  void changeScreen() {
+  void changeScreen(int index) {
     setState(() {
-      screen = const HomeScreen();
+      screen = screens[index];
     });
   }
 
   @override
   void initState() {
+    screens = [ Login(changeScreen: changeScreen), const HomeScreen(), StartScreen(changeScreen: changeScreen)];
     screen = StartScreen(
       changeScreen: changeScreen,
     );
@@ -33,6 +36,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        // body: MapSample(),
         body: screen,
       ),
     );

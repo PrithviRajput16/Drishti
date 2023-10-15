@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:her_saarthi/screens/google_maps.dart';
+import 'package:her_saarthi/screens/profile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,9 +15,19 @@ class HomeScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('assets/icon.jpeg'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfileScreen(),
+                        ),
+                      );
+                    },
+                    child: const CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/icon.jpeg'),
+                    ),
                   ),
                   const SizedBox(
                     width: 17,
@@ -150,7 +162,14 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MapSample(),
+                          ),
+                        );
+                      },
                       child: const Padding(
                         padding: EdgeInsets.all(14.0),
                         child: Row(

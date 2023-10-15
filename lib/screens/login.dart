@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(218, 35, 5, 72),
+      backgroundColor: const Color.fromARGB(255, 34, 38, 97),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

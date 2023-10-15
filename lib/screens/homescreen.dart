@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:her_saarthi/screens/call.dart';
 import 'package:her_saarthi/screens/google_maps.dart';
 import 'package:her_saarthi/screens/profile.dart';
 
@@ -79,23 +80,79 @@ class HomeScreen extends StatelessWidget {
               ),
               Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(
-                                20,
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CallScreen(),
+                              )),
+                          child: const Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(
+                                  20,
+                                ),
+                              ),
+                            ),
+                            elevation: 5,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(46, 15, 46, 15),
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.message,
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'Live\nStream',
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                          elevation: 5,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(46, 15, 46, 15),
-                            child: Center(
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  // title: const Text('Alert Dialog'),
+                                  content: const Text(
+                                      'Messages sent to Emergency Contacts'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: const Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
+                            elevation: 5,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(33, 15, 33, 15),
                               child: Column(
                                 children: [
                                   Icon(
@@ -104,35 +161,9 @@ class HomeScreen extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text(
-                                    'Live\nStream',
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  Text('Emergency\nMessaging'),
                                 ],
                               ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          elevation: 5,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(33, 15, 33, 15),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.message,
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text('Emergency\nMessaging'),
-                              ],
                             ),
                           ),
                         ),
